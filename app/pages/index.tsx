@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import Level from "../level";
-import Player from "../player";
+import Level from "../_components/level";
+import Player from "../_components/player";
 
 const Screen = () => {
   const [playerPosition, setPlayerPosition] = useState<{

@@ -1,3 +1,5 @@
+"use client";
+
 const Player = ({
   playerPosition: { x, y },
 }: {

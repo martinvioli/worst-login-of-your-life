@@ -1,4 +1,4 @@
-import Screen from "./_components/screen";
+import Screen from "./pages";
 
 export default function Home() {
   return <Screen />;
