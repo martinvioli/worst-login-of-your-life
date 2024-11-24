@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect, createRef } from "react";
 import Level from "../_components/level";
 import Player from "../_components/player";
 
@@ -29,6 +29,18 @@ const Screen = () => {
       default:
         break;
     }
+    if (playerRef.current && levelRef.current) {
+      if (
+        y + playerRef.current.getBoundingClientRect().height >
+          levelRef.current?.getBoundingClientRect().height ||
+        x + playerRef.current.getBoundingClientRect().width >
+          levelRef.current?.getBoundingClientRect().width ||
+        y < 0 ||
+        x < 0
+      ) {
+        return;
+      }
+    }
     setPlayerPosition({ x, y });
   };
 
@@ -38,9 +50,13 @@ const Screen = () => {
       window.removeEventListener("keydown", handleUserKeyPress);
     };
   }, [handleUserKeyPress]);
+
+  const playerRef = createRef<HTMLDivElement>();
+  const levelRef = createRef<HTMLDivElement>();
+
   return (
-    <Level>
-      <Player playerPosition={playerPosition}></Player>
+    <Level ref={levelRef} playerRef={playerRef}>
+      <Player ref={playerRef} playerPosition={playerPosition}></Player>
     </Level>
   );
 };
