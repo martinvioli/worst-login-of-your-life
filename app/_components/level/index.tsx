@@ -11,6 +11,9 @@ import {
   useState,
 } from "react";
 
+import { IconButton } from "@mui/material";
+import DescriptionIcon from "@mui/icons-material/Description";
+
 const Level = forwardRef<
   HTMLDivElement,
   { playerRef: RefObject<HTMLDivElement> } & PropsWithChildren
@@ -38,9 +41,13 @@ const Level = forwardRef<
     if (colliding(playerRef, loginButtonDivRef)) {
       router.push("/login");
     }
+    // if (colliding(playerRef, documentButtonDivRef)) {
+    //   router.push("/documentation");
+    // }
   });
 
   const loginButtonDivRef = createRef<HTMLDivElement>();
+  // const documentButtonDivRef = createRef<IconButton>();
 
   const screamers = [
     {
@@ -72,16 +79,16 @@ const Level = forwardRef<
     }, delay);
   };
 
-  useLayoutEffect(() => {
-    const timer = recursiveTimer(8000);
+  // useLayoutEffect(() => {
+  //   const timer = recursiveTimer(8000);
 
-    return () => {
-      clearTimeout(timer);
-      if (audioRef.current) {
-        audioRef.current.volume = 0;
-      }
-    };
-  }, []);
+  //   return () => {
+  //     clearTimeout(timer);
+  //     if (audioRef.current) {
+  //       audioRef.current.volume = 0;
+  //     }
+  //   };
+  // }, []);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -91,6 +98,7 @@ const Level = forwardRef<
       style={{ backgroundColor: "white", height: "100vh", width: "100vw" }}
     >
       {children}
+
       <div
         ref={loginButtonDivRef}
         style={{
@@ -104,6 +112,22 @@ const Level = forwardRef<
       >
         Ir al login
       </div>
+
+      <div
+        style={{
+          position: "absolute",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+      >
+        <IconButton
+          onClick={() => router.push("/documentation")}
+          style={{ color: "gold" }}
+        >
+          <DescriptionIcon style={{ fontSize: "32px" }} />
+        </IconButton>
+      </div>
+
       <div
         style={{
           position: "absolute",
