@@ -41,13 +41,9 @@ const Level = forwardRef<
     if (colliding(playerRef, loginButtonDivRef)) {
       router.push("/login");
     }
-    // if (colliding(playerRef, documentButtonDivRef)) {
-    //   router.push("/documentation");
-    // }
   });
 
   const loginButtonDivRef = createRef<HTMLDivElement>();
-  // const documentButtonDivRef = createRef<IconButton>();
 
   const screamers = [
     {
@@ -79,16 +75,16 @@ const Level = forwardRef<
     }, delay);
   };
 
-  // useLayoutEffect(() => {
-  //   const timer = recursiveTimer(8000);
+  useLayoutEffect(() => {
+    const timer = recursiveTimer(8000);
 
-  //   return () => {
-  //     clearTimeout(timer);
-  //     if (audioRef.current) {
-  //       audioRef.current.volume = 0;
-  //     }
-  //   };
-  // }, []);
+    return () => {
+      clearTimeout(timer);
+      if (audioRef.current) {
+        audioRef.current.volume = 0;
+      }
+    };
+  }, []);
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
