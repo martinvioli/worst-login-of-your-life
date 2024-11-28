@@ -1,13 +1,15 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const Login = () => {
+const Register = () => {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorCount, setErrorCount] = useState(0);
 
-  const handleLogin = () => {
+  const handleRegister = () => {
     if (!username || !password) {
       alert("✅ los campos son obligaortorios!");
       resetFields();
@@ -79,12 +81,11 @@ const Login = () => {
       resetFields();
       return;
     } else {
-      alert("❌ te logueaste!. Clickea en ACEPTAR para ir al HOME.");
-      setTimeout(() => {
-        window.location.replace(
-          "https://www.youtube.com/watch?v=x1N8VI4kQao&ab_channel=CesarDanielMoro"
-        );
-      }, 500);
+      window.localStorage.setItem(
+        "users",
+        JSON.stringify([{ email: username, password }])
+      );
+      router.push("/carasucia");
     }
   };
 
@@ -130,7 +131,7 @@ const Login = () => {
         }
       />
       <button
-        onClick={handleLogin}
+        onClick={handleRegister}
         style={{
           position: "absolute",
           bottom: "20px",
@@ -141,10 +142,10 @@ const Login = () => {
           backgroundColor: "red",
         }}
       >
-        Login
+        R E J I S T R A R S E
       </button>
     </div>
   );
 };
 
-export default Login;
+export default Register;
