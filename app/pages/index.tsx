@@ -10,7 +10,7 @@ const Screen = () => {
     y: number;
   }>({ x: 0, y: 0 });
 
-  const handleUserKeyPress = (event: any) => {
+  const handleUserKeyPress = (event: { keyCode: number }) => {
     const { keyCode } = event;
     let { x, y } = playerPosition;
     switch (keyCode) {
