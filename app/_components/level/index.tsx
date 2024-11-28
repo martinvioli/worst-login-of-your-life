@@ -39,7 +39,7 @@ const Level = forwardRef<
 
   useLayoutEffect(() => {
     if (colliding(playerRef, loginButtonDivRef)) {
-      router.push("/login");
+      router.push("/mynameisgiovannigiorgiobuteverybodycallsmegiorgio");
     }
   });
 
