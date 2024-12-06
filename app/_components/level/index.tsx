@@ -91,8 +91,24 @@ const Level = forwardRef<
   return (
     <div
       ref={ref}
-      style={{ backgroundColor: "white", height: "100vh", width: "100vw" }}
+      style={{
+        backgroundImage:
+          "url('https://pbs.twimg.com/media/E52uBprWEAcEx2G?format=jpg&name=large')",
+        backgroundSize: "cover",
+        height: "100vh",
+        width: "100vw",
+      }}
     >
+      <span
+        style={{
+          position: "absolute",
+          color: "red",
+          top: "30px",
+          left: "250px",
+        }}
+      >
+        Te moves con las flechitas del teclado. Las flechitas.
+      </span>
       {children}
 
       <div
