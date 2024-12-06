@@ -107,7 +107,8 @@ const Level = forwardRef<
           left: "250px",
         }}
       >
-        Te moves con las flechitas del teclado. Las flechitas.
+        Te moves con las flechitas del teclado. Las flechitas. Tenes que llevar
+        al payasito al boton de login para avanzar.
       </span>
       {children}
 
